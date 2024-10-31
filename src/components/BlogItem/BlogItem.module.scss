@@ -1,0 +1,39 @@
+.blog-wrapper {
+    height: 420px;
+    width: 49%;
+    display: block;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.blog-image {
+    height: 278px;
+    width: 100%;
+}
+
+.blog-title {
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin: 10px;
+    line-height: 2rem;
+    height: 4rem;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.blog-description {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #b4b4b4;
+    margin: 10px;
+    line-height: 1.8rem;
+    height: 3.6rem;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
