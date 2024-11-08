@@ -7,14 +7,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const cx = classNames.bind(styles);
 
-function ForumItem({ children }) {
-    // Quản lý trạng thái hiển thị của answer-wrapper
+function ForumItem({ data }) {
     const [isAnswerVisible, setAnswerVisible] = useState(false);
 
-    // Hàm toggle để hiển thị/ẩn answer-wrapper
     const toggleAnswerVisibility = () => {
-        setAnswerVisible(!isAnswerVisible); // Thay đổi trạng thái khi nhấn vào link
+        setAnswerVisible(!isAnswerVisible);
     };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    };
+
+    function arrayBufferToBase64(buffer) {
+        let binary = '';
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    }
 
     return (
         <div className={cx('container')}>
@@ -22,7 +38,7 @@ function ForumItem({ children }) {
                 <div className={cx('user-avatar-section')}>
                     <img
                         className={cx('user-avatar')}
-                        src="https://cdn.pixabay.com/photo/2021/03/20/11/57/woman-6109643_1280.jpg"
+                        src={`data:image/jpeg;base64,${arrayBufferToBase64(data.user_id.profile_image.data)}`}
                         alt="User Avatar"
                     />
                 </div>
@@ -30,7 +46,7 @@ function ForumItem({ children }) {
                 <div className={cx('question-section')}>
                     <div className={cx('question-title-wrapper')}>
                         <h4 className={cx('question-title')}>
-                            <span>Vàng da sinh lý có cần chiếu đèn không? Một số lưu ý quan trọng</span>
+                            <span>{data.post_title}</span>
                         </h4>
                         <FontAwesomeIcon className={cx('comment-icon')} icon={faComment} />
                         <h4 className={cx('question-count')}>
@@ -42,23 +58,18 @@ function ForumItem({ children }) {
                             <span>Đăng bởi</span>
                         </h4>
                         <h4 className={cx('question-asker')}>
-                            <span>Thắng Hoàng</span>
+                            <span>{data.user_id.email}</span>
                         </h4>
                         <h4 className={cx('when')}>
                             <span>vào lúc</span>
                         </h4>
                         <h4 className={cx('asked-time')}>
-                            <span>2/8/2024</span>
+                            <span>{formatDate(data.createdAt)}</span>
                         </h4>
                     </div>
                     <div className={cx('question-wrapper')}>
                         <h4 className={cx('question')}>
-                            <span>
-                                Thưa bác sĩ, vàng da sinh lý có cần chiếu đèn không ạ? Con em được 3 ngày tuổi, có biểu
-                                hiện vàng da ở vùng mặt và cổ. Bác sĩ bảo con bị vàng da sinh lý nên không cần điều trị,
-                                tình trạng này sẽ tự khỏi sau ít ngày. Tuy nhiên, đến nay đã gần 1 tuần em thấy da bé
-                                vẫn vàng nên lo lắng quá. Mong bác sĩ tư vấn ạ.
-                            </span>
+                            <span>{data.post_content}</span>
                         </h4>
                     </div>
                     <div className={cx('question-link-wrapper')}>

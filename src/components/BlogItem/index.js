@@ -3,22 +3,19 @@ import styles from './BlogItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-function BlogItem() {
+function BlogItem({ data }) {
     return (
-        <a className={cx('blog-wrapper')}>
+        <a className={cx('blog-wrapper')} href={`/bloginfo/${data._id}`}>
             <img
                 className={cx('blog-image')}
-                src="https://tamanhhospital.vn/wp-content/uploads/2021/03/sanh-cho-rong-rai-f.jpg"
+                src={`data:image/jpeg;base64,${data.article_image}`}
                 alt="Blog_image"
             ></img>
             <h4 className={cx('blog-title')}>
-                <span>Khai trương phòng khám đa khoa tại quận 7</span>
+                <span>{data.article_title}</span>
             </h4>
             <h4 className={cx('blog-description')}>
-                <span>
-                    Ngày 23/8/2024, hệ thống bệnh viện Đa khoa chính thức đưa vào hoạt động phòng khám Đa khoa Quận 7
-                    chuyên sâu, hiện đại, góp phần khám chữa bệnh cho nhiều bệnh nhân hơn
-                </span>
+                <span>{data.article_description}</span>
             </h4>
         </a>
     );

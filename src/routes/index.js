@@ -7,7 +7,7 @@ const publicRoutes = [
     { path: '/', component: Blog },
     { path: '/forum', component: Forum },
     { path: '/create-blog', component: CreateBlog },
-    { path: '/bloginfo', component: BlogInfo },
+    { path: '/bloginfo/:id', component: BlogInfo },
 ];
 
 const privateRoutes = [];

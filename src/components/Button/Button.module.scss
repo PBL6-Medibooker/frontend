@@ -140,6 +140,24 @@
     }
 }
 
+.pagi {
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: #005a5c;
+    padding: 5px 2px;
+    &:hover {
+        background: #eee;
+    }
+}
+
+.pagi_active {
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: #fff;
+    background-color: #005a5c;
+    padding: 5px 2px;
+}
+
 // Button sizes
 .small {
     min-width: 88px;
