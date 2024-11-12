@@ -84,7 +84,6 @@ export const LoginDeco = styled.div`
     overflow: hidden;
     display: flex;
     justify-content: flex-end;
-    
 `
 
 export const Deco2 = styled.div`

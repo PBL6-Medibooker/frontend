@@ -1,8 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {AContainer, AHeader, ALayout, ALeftSide, ARightSide, ARSItem, ASpace, AUnderline} from "./appointment.element";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import {IoIosArrowRoundForward} from "react-icons/io";
+import * as provincesService from "../../services/Provinces"
+
 
 const Appointment = () => {
+    const [provinces, setProvinces] = useState([]);
+
+    const getAllProvinces = async () => {
+        const result = await provincesService.apiGetPublicProvinces();
+        setProvinces(result.data.results);
+    }
+
+    useEffect(() => {
+        getAllProvinces()
+    }, []);
+
     return (
         <form>
             <ALayout>
@@ -20,14 +33,25 @@ const Appointment = () => {
                             <br/> 24 giờ trước khi đến khám.</p>
 
                         <p>
-                            Trong trường hợp khẩn cấp <br/> hoặc nghi ngờ có các triệu <br/> chứng nguy hiểm, quý <br/> khách vui lòng <strong> ĐẾN
-                            TRỰC <br/> TIẾP </strong> Phòng khám hoặc các <br/>trung tâm y tế gần nhất để <br/> kịp thời xử lý.
+                            Trong trường hợp khẩn cấp <br/> hoặc nghi ngờ có các triệu <br/> chứng nguy hiểm,
+                            quý <br/> khách vui lòng <strong> ĐẾN
+                            TRỰC <br/> TIẾP </strong> Phòng khám hoặc các <br/>trung tâm y tế gần nhất để <br/> kịp thời
+                            xử lý.
                         </p>
 
                         <ARightSide>
                             <ARSItem>
                                 <p>Chọn địa điểm khám</p>
-                                <input type='text'/>
+                                <select>
+                                    {
+                                        provinces.map((item, index) => (
+                                            <option key={index} value={item.province_name}>
+                                                {item.province_name}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
+
                             </ARSItem>
 
                             <ARSItem>
@@ -57,7 +81,7 @@ const Appointment = () => {
 
                             <ARSItem>
                                 <p>Nhập vấn đề về sức khoẻ </p>
-                                <textarea rows="10" cols="50" ></textarea>
+                                <textarea rows="10" cols="50"></textarea>
                             </ARSItem>
                             <ARSItem>
                                 <button>TIẾP THEO</button>

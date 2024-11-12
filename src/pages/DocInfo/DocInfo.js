@@ -9,12 +9,9 @@ import {
     DocInfoRight,
     DocName,
     DocSD,
-    DoctorEducation,
     DoctorInformation,
     DoctorInformationItem,
-    DoctorIntroduce,
     DoctorRelate,
-    DoctorWorkHistory,
     HeaderUnderline, RelatedDoctorItem,
     Underline
 } from "./docinfo.element";

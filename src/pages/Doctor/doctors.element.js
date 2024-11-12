@@ -50,14 +50,14 @@ export const DoctorsRight = styled.div`
 
     .card {
         border: 1px solid #BFDBFE;
-        border-radius: 0.75rem; /* rounded-xl */
+        border-radius: 0.75rem; 
         overflow: hidden;
         cursor: pointer;
-        transition: all 0.5s ease; /* transition-all duration-500 */
+        transition: all 0.5s ease; 
     }
 
     .card:hover {
-        transform: translateY(-10px); /* hover:translate-y-[-10px] */
+        transform: translateY(-10px); 
     }
 
     .image-background {

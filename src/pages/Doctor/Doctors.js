@@ -11,6 +11,7 @@ const Doctors = () => {
 
 
     const {doctors} = useContext(AppContext)
+
     const applyFilter = () =>{
         if(speciality){
             setFilterDoc(doctors.filter(doctor => doctor.speciality === speciality))
@@ -21,6 +22,7 @@ const Doctors = () => {
     useEffect(() => {
         applyFilter()
     }, [doctors, speciality]);
+
     return (
         <div>
             <DoctorsLayout>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Container} from "../../globalStyles";
+
 export const DocInfoLayout = styled(Container)`
     display: flex;
     justify-content: center;

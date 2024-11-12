@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Container} from "../../globalStyles";
 
 
 export const ALayout = styled.div`
@@ -8,7 +9,7 @@ export const ALayout = styled.div`
     //height: 1024px;
 
 `
-export const AContainer = styled.div`
+export const AContainer = styled(Container)`
     display: flex;
     flex: 7;
     width: 90%;
@@ -16,6 +17,8 @@ export const AContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: #F0F2F1;
+    ${Container}
+
 `
 export const ASpace = styled.div`
     display: flex;
@@ -67,7 +70,6 @@ export const ARightSide = styled.div`
 export const ARSItem = styled.div`
     margin-left: 10px;
     width: 100%;
-    //margin: 20px;
     
     p{
         font-weight: bold;
@@ -75,13 +77,16 @@ export const ARSItem = styled.div`
         margin-bottom: 10px;
         display: inline-block;
     }
-    input{
+    input, select{
         width: 90%;
         height: 35px;
         border: 1px solid #000000;
         border-radius: 6px;
         display: inline-block;
         margin-top: -10px;
+        font-size: 15px;
+        padding-left: 10px; 
+
     }
     textarea{
         width: 90%;
